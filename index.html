@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Index.html</title>
+<SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript">
+<!--
+function zaszyfruj() {
+	
+	var pole_klucz = document.getElementsByName("klucz")[0];
+	var pole_wiadomosc = document.getElementsByName("wiadomosc")[0];
+        var pole_opcja = document.getElementsByName("opcja")[0];
+
+        var opcja = pole_opcja.value;
+        var klucz = pole_klucz.value;
+        var wiadomosc = pole_wiadomosc.value;
+
+	var zaszyfrowana = "";
+	var ind;
+
+        if (opcja === "zaszyfruj") {
+
+	    for (ind in wiadomosc) {
+		
+		zaszyfrowana +=
+		String.fromCharCode((wiadomosc[ind].charCodeAt(0) +
+		parseInt(klucz[ind % klucz.length], 0)) % 256);
+
+            }
+        }
+
+        else {
+
+	    for (ind in wiadomosc) {
+
+                zaszyfrowana +=
+                String.fromCharCode((wiadomosc[ind].charCodeAt(0) -
+                parseInt(klucz[ind % klucz.length], 0)) % 256);
+
+            }
+
+        }
+
+	document.write("Zaszyfrowana wiadomosc:<br><br>");
+	document.write(zaszyfrowana);
+}
+// -->
+</SCRIPT>
+</head>
+
+
+<body bgcolor="green">
+<p align=center>
+<TABLE BORDER=2 WIDTH=400 HEIGHT=200 ALIGN=center bgcolor="white">
+
+<TR><TD ALIGN=left> Rodzaj szyfru </TD><TD ALIGN=left> Opis </TD></TR>
+<TR><TD ALIGN=left> Szyfr Cezara </TD><TD ALIGN=left> Kazda litera zaszyfrowanej wiadomosci
+jest przesunieta wzgledem oryginalnej o stala ilosc pozycji w alfabecie. </TD></TR>
+<TR><TD ALIGN=left> ROT13 </TD><TD ALIGN=left> Rodzaj szyfru Cezara, gdzie ilosc
+przesunietych pozycji wynosi 13. Charakteryzuje sie tym, ¿e odszyfrowanie polega na
+ponownym zaszyfrowaniu zaszyfrowanej wiadomosci (tylko dla alfabetu angielskiego).</TD></TR>
+<TR><TD ALIGN=left> Szyfr Viegenera </TD><TD ALIGN=left> Szyfr, ktorego klucz ma postac ciagu
+    znakow. Szyfrowanie polega na przesunieciu kazdej litery w wiadomosci o ilosc pozycji rowna
+    numerowi pozycji w alfabecie odpowiadajacej litery w kluczu. Odpowiadajaca litera, to litera
+    na tej samej pozycji w kluczu, co w wiadomosci. Jezeli klucz jest krotszy niz wiadomosc, to po
+    osiagnieciu jego konca, numery pozycji sa odczytywane na nowo, od poczatku klucza.</TD></TR>
+
+
+<div>teoria systemow</div>
+<div>SCR</div>
+<div>teoria regulacji</div>
+<div>SAIC</div>
+</TABLE>
+
+<br>
+
+<TABLE>
+<form action="javascript:zaszyfruj()">
+    
+Klucz (ciag cyfr):
+<input name="klucz" length=100 size=28>
+<br>
+<textarea name="wiadomosc" cols=50 rows=10>
+Wiadomosc...
+</textarea>
+<br>
+<input type="radio" name="opcja" value="zaszyfruj" checked>
+zaszyfruj
+<input type="radio" name="opcja" value="rozszyfruj">
+rozszyfruj
+<input TYPE="submit" NAME="zaszyfruj" VALUE="Wykonaj">
+
+</form>
+</TABLE>
+
+</body>
+</html>
